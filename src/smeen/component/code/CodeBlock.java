@@ -13,19 +13,26 @@ import smeen.views.MainView;
 public abstract class CodeBlock extends HBox implements Copyable<CodeBlock> {
 
     private MainView main;
-    public CodeBlock(MainView main){
+
+    public CodeBlock(MainView main) {
         this.main = main;
 
         setAlignment(Pos.CENTER);
         setBackground(Background.fill(Color.NAVY));
         setSpacing(10);
-        setPadding(new Insets(10,10,5,5));
+        setPadding(new Insets(10, 10, 5, 5));
 
-        addEventFilter(MouseEvent.DRAG_DETECTED, e -> {
+        addEventHandler(MouseEvent.DRAG_DETECTED, e -> {
+            startFullDrag();
+
             CodeBlock copy = copy();
-            Point2D pos = localToScene(0,0);
+            Point2D pos = localToScene(0, 0);
             copy.relocate(pos.getX(), pos.getY());
-            copy.setBackground(Background.fill(Color.RED));
+
+            // if dragged from code area, remove it and only follow mouse
+            // we must calculate relative positions before removing (calling localToScene must be above this code)
+            main.getCodeArea().getChildren().remove(this);
+
             main.draggingBlockProperty().set(copy);
         });
     }

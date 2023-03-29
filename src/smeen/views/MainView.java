@@ -8,16 +8,20 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import smeen.component.code.CodeBlock;
 import smeen.component.code.CodeSelector;
+import smeen.component.code.block.movement.CodeArea;
 
 
 public class MainView extends Pane {
     private final MenuBar menuBar;
     private final Menu fileMenu;
     private final CodeSelector codeSelector;
+
+    private final CodeArea codeArea;
     private final ObjectProperty<CodeBlock> draggingBlock;
 
     public MainView() {
@@ -45,12 +49,21 @@ public class MainView extends Pane {
 
         menuBar = new MenuBar(fileMenu);
 
-        codeSelector = new CodeSelector(this);
+        HBox content = new HBox();
 
-        root.getChildren().addAll(menuBar, codeSelector);
+        codeSelector = new CodeSelector(this);
+        codeSelector.prefWidthProperty().bind(widthProperty().divide(2));
+
+        codeArea = new CodeArea(this);
+        codeArea.prefWidthProperty().bind(widthProperty().divide(2));
+
+        content.getChildren().addAll(codeSelector, codeArea);
+
+        root.getChildren().addAll(menuBar, content);
 
         getChildren().addAll(root);
 
+        // handle dragging code block from selector
         final double[] oldPos = {-1, -1}; // oldPos[0] = x, oldPos[1] = y
         final boolean[] dragging = { false };
         addEventFilter(MouseEvent.MOUSE_DRAGGED, e -> {
@@ -74,9 +87,22 @@ public class MainView extends Pane {
             oldPos[1] = e.getY();
         });
 
-        addEventFilter(MouseEvent.MOUSE_RELEASED, e -> {
+        addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
+            CodeBlock block = draggingBlock.get();
+
+            // destroy dragging block when released.
             dragging[0] = false;
             draggingBlock.set(null);
+
+            // add to code area if inside
+            Point2D mousePos = new Point2D(e.getX(), e.getY());
+            mousePos = codeArea.sceneToLocal(mousePos);
+            if(block != null && codeArea.getBoundsInLocal().contains(mousePos)){
+                Point2D blockPos = new Point2D(block.getLayoutX(), block.getLayoutY());
+                blockPos = codeArea.sceneToLocal(blockPos);
+                block.relocate(blockPos.getX(), blockPos.getY());
+                codeArea.getChildren().add(block);
+            }
         });
     }
 
@@ -84,4 +110,7 @@ public class MainView extends Pane {
         return draggingBlock;
     }
 
+    public CodeArea getCodeArea() {
+        return codeArea;
+    }
 }
