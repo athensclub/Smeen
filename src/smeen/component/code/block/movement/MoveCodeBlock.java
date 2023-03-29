@@ -34,6 +34,8 @@ public class MoveCodeBlock extends CodeBlock {
 
     @Override
     public CodeBlock copy() {
-        return new MoveCodeBlock(getMain());
+        MoveCodeBlock copy = new MoveCodeBlock(getMain());
+        copy.amount.setText(amount.getText());
+        return copy;
     }
 }
