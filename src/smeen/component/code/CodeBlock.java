@@ -26,6 +26,7 @@ public abstract class CodeBlock extends HBox implements Copyable<CodeBlock> {
             startFullDrag();
 
             CodeBlock copy = copy();
+            // set the position of the node from relative to the parent to relative to the scene.
             Point2D pos = localToScene(0, 0);
             copy.relocate(pos.getX(), pos.getY());
 

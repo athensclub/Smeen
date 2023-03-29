@@ -15,7 +15,10 @@ import smeen.component.code.CodeBlock;
 import smeen.component.code.CodeSelector;
 import smeen.component.code.block.movement.CodeArea;
 
-
+/**
+ * We mostly assume that MainView is root of the scene and every positions relative to the scene
+ * is the same as the positions relative to the root.
+ */
 public class MainView extends Pane {
     private final MenuBar menuBar;
     private final Menu fileMenu;
@@ -94,7 +97,7 @@ public class MainView extends Pane {
             dragging[0] = false;
             draggingBlock.set(null);
 
-            // add to code area if inside
+            // add to code area if mouse is inside
             Point2D mousePos = new Point2D(e.getX(), e.getY());
             mousePos = codeArea.sceneToLocal(mousePos);
             if(block != null && codeArea.getBoundsInLocal().contains(mousePos)){
