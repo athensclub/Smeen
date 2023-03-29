@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2616b6b-31f5-4892-9e2d-9fb605b7049c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/smeen/global/Fonts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/MoveCodeBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeen/util/Copyable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/smeen.iml" beforeDir="false" afterPath="$PROJECT_DIR$/smeen.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/smeen/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/global/Fonts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/global/Fonts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/views/MainView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Program Files/Java/javafx-sdk-19.0.2.1/lib",
+    "last_opened_file_path": "D:/Chula Study/Year 1/PROG METH/IdeaProjects/Smeen",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
