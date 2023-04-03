@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2616b6b-31f5-4892-9e2d-9fb605b7049c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlockList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/smeen/global/SmeenConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeBlockList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlockList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/component/code/block/movement/CodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/CodeArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/block/movement/MoveCodeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/MoveCodeBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/views/MainView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
