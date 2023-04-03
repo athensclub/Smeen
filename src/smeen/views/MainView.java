@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import smeen.component.code.CodeBlock;
+import smeen.component.code.CodeBlockList;
 import smeen.component.code.CodeSelector;
 import smeen.component.code.block.movement.CodeArea;
 
@@ -25,7 +26,7 @@ public class MainView extends Pane {
     private final CodeSelector codeSelector;
 
     private final CodeArea codeArea;
-    private final ObjectProperty<CodeBlock> draggingBlock;
+    private final ObjectProperty<CodeBlockList> draggingBlock;
 
     public MainView() {
         draggingBlock = new SimpleObjectProperty<>();
@@ -56,9 +57,11 @@ public class MainView extends Pane {
 
         codeSelector = new CodeSelector(this);
         codeSelector.prefWidthProperty().bind(widthProperty().divide(2));
+        codeSelector.prefHeightProperty().bind(heightProperty());
 
         codeArea = new CodeArea(this);
         codeArea.prefWidthProperty().bind(widthProperty().divide(2));
+        codeArea.prefHeightProperty().bind(heightProperty());
 
         content.getChildren().addAll(codeSelector, codeArea);
 
@@ -73,6 +76,7 @@ public class MainView extends Pane {
             if(draggingBlock.get() == null)
                 return;
 
+            // first call of the drag event, set the oldPos to calculate in next iteration.
             if(!dragging[0]){
                 oldPos[0] = e.getX();
                 oldPos[1] = e.getY();
@@ -80,18 +84,25 @@ public class MainView extends Pane {
                 return;
             }
 
+            // calculate delta mouse x and delta mouse y.
             double dx = e.getX() - oldPos[0];
             double dy = e.getY() - oldPos[1];
 
-            CodeBlock block = draggingBlock.get();
+            // move the dragging block by the delta.
+            CodeBlockList block = draggingBlock.get();
             block.relocate(block.getLayoutX() + dx, block.getLayoutY() + dy);
 
+            // check if dragging block can snap to any block in code area.
+            CodeBlockList snappable = codeArea.getSnappableCodeBlockList();
+            System.out.println(snappable);
+
+            // set the oldPos to use for next iteration calculation.
             oldPos[0] = e.getX();
             oldPos[1] = e.getY();
         });
 
         addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
-            CodeBlock block = draggingBlock.get();
+            CodeBlockList block = draggingBlock.get();
 
             // destroy dragging block when released.
             dragging[0] = false;
@@ -101,15 +112,17 @@ public class MainView extends Pane {
             Point2D mousePos = new Point2D(e.getX(), e.getY());
             mousePos = codeArea.sceneToLocal(mousePos);
             if(block != null && codeArea.getBoundsInLocal().contains(mousePos)){
+                // set block position from relative to scene to relative to CodeArea.
                 Point2D blockPos = new Point2D(block.getLayoutX(), block.getLayoutY());
                 blockPos = codeArea.sceneToLocal(blockPos);
                 block.relocate(blockPos.getX(), blockPos.getY());
+
                 codeArea.getChildren().add(block);
             }
         });
     }
 
-    public ObjectProperty<CodeBlock> draggingBlockProperty() {
+    public ObjectProperty<CodeBlockList> draggingBlockProperty() {
         return draggingBlock;
     }
 

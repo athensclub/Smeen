@@ -21,21 +21,6 @@ public abstract class CodeBlock extends HBox implements Copyable<CodeBlock> {
         setBackground(Background.fill(Color.NAVY));
         setSpacing(10);
         setPadding(new Insets(10, 10, 5, 5));
-
-        addEventHandler(MouseEvent.DRAG_DETECTED, e -> {
-            startFullDrag();
-
-            CodeBlock copy = copy();
-            // set the position of the node from relative to the parent to relative to the scene.
-            Point2D pos = localToScene(0, 0);
-            copy.relocate(pos.getX(), pos.getY());
-
-            // if dragged from code area, remove it and only follow mouse
-            // we must calculate relative positions before removing (calling localToScene must be above this code)
-            main.getCodeArea().getChildren().remove(this);
-
-            main.draggingBlockProperty().set(copy);
-        });
     }
 
     public MainView getMain() {
