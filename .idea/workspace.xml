@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2616b6b-31f5-4892-9e2d-9fb605b7049c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/CodeArea.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlockList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/smeen/global/SmeenConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/block/movement/MoveCodeBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/MoveCodeBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/CodeSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/smeen/component/code/block/movement/CodeArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/component/code/block/movement/CodeArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/smeen/views/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/smeen/views/MainView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,18 +43,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/Chula Study/Year 1/PROG METH/IdeaProjects/Smeen",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Chula Study/Year 1/PROG METH/IdeaProjects/Smeen&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="smeen.application.Main" />
