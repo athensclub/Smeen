@@ -12,7 +12,6 @@ import smeen.views.MainView;
 public class MoveCodeBlock extends CodeBlock {
 
     private TextField amount;
-
     public MoveCodeBlock(MainView main){
         super(main);
         Label first = new Label("เคลื่อนที่");
