@@ -1,12 +1,8 @@
 package smeen.component.code.block.movement;
 
-import javafx.geometry.Point2D;
-import javafx.scene.Node;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import smeen.component.code.CodeBlock;
 import smeen.component.code.CodeBlockList;
 import smeen.views.MainView;
 
