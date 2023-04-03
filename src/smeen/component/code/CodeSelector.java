@@ -1,12 +1,10 @@
 package smeen.component.code;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import smeen.component.code.block.movement.MoveCodeBlock;
 import smeen.global.Fonts;
 import smeen.views.MainView;
@@ -36,7 +34,7 @@ public class CodeSelector extends ScrollPane {
 
             CodeBlockList toDrag = new CodeBlockList(main);
             CodeBlock copy = block.copy();
-            toDrag.getChildren().add(copy);
+            toDrag.getCodeList().getChildren().add(copy);
 
             // set the position of the node from relative to the parent to relative to the scene.
             Point2D pos = block.localToScene(0, 0);

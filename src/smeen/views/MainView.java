@@ -2,7 +2,6 @@ package smeen.views;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.event.ActionEvent;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -11,7 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import smeen.component.code.CodeBlock;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import smeen.component.code.CodeBlockList;
 import smeen.component.code.CodeSelector;
 import smeen.component.code.block.movement.CodeArea;
@@ -71,13 +71,14 @@ public class MainView extends Pane {
 
         // handle dragging code block from selector
         final double[] oldPos = {-1, -1}; // oldPos[0] = x, oldPos[1] = y
-        final boolean[] dragging = { false };
+        final boolean[] dragging = {false};
+        final CodeBlockList[] lastShownSnappable = {null};
         addEventFilter(MouseEvent.MOUSE_DRAGGED, e -> {
-            if(draggingBlock.get() == null)
+            if (draggingBlock.get() == null)
                 return;
 
             // first call of the drag event, set the oldPos to calculate in next iteration.
-            if(!dragging[0]){
+            if (!dragging[0]) {
                 oldPos[0] = e.getX();
                 oldPos[1] = e.getY();
                 dragging[0] = true;
@@ -92,9 +93,13 @@ public class MainView extends Pane {
             CodeBlockList block = draggingBlock.get();
             block.relocate(block.getLayoutX() + dx, block.getLayoutY() + dy);
 
-            // check if dragging block can snap to any block in code area.
+            // handle code block snapping with other block list
             CodeBlockList snappable = codeArea.getSnappableCodeBlockList();
-            System.out.println(snappable);
+            if (lastShownSnappable[0] != null && lastShownSnappable[0] != snappable)
+                lastShownSnappable[0].showSnapHintProperty().set(false);
+            if (snappable != null)
+               snappable.showSnapHintProperty().set(true);
+            lastShownSnappable[0] = snappable;
 
             // set the oldPos to use for next iteration calculation.
             oldPos[0] = e.getX();
@@ -108,10 +113,16 @@ public class MainView extends Pane {
             dragging[0] = false;
             draggingBlock.set(null);
 
+            // reset snapping data
+            if(lastShownSnappable[0] != null){
+                lastShownSnappable[0].showSnapHintProperty().set(false);
+                lastShownSnappable[0] = null;
+            }
+
             // add to code area if mouse is inside
             Point2D mousePos = new Point2D(e.getX(), e.getY());
             mousePos = codeArea.sceneToLocal(mousePos);
-            if(block != null && codeArea.getBoundsInLocal().contains(mousePos)){
+            if (block != null && codeArea.getBoundsInLocal().contains(mousePos)) {
                 // set block position from relative to scene to relative to CodeArea.
                 Point2D blockPos = new Point2D(block.getLayoutX(), block.getLayoutY());
                 blockPos = codeArea.sceneToLocal(blockPos);
